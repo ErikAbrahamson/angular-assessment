@@ -2,19 +2,23 @@
 (function() {
   'use strict';
 
-  describe.only('Directive: peopleGrid', function() {
+  describe('Directive: peopleGrid', function() {
     var element,
-      vm;
+      vm,
+      people = mockData.getMockPeople();
 
     beforeEach(function() {
       bard.appModule('app.components.peopleGrid');
       bard.inject(
         '$q',
+        '$log',
         '$compile',
         '$rootScope',
         '$state',
-        '$templateCache'
+        '$templateCache',
+        'dataservice'
       );
+      sinon.stub(dataservice, 'getPeople').returns($q.when(people));
     });
 
     beforeEach(function() {
@@ -34,6 +38,25 @@
     it('is able to be created', function() {
       expect(element).to.be.defined;
       expect(vm).to.be.defined;
+    });
+
+    describe('after activate', function() {
+      beforeEach(function() {
+        vm.activate();
+        $rootScope.$apply();
+      });
+
+      // it('should have logged "Activated"', function() {
+      //   expect($log.info.logs).to.match(/Activated Dashboard View/);
+      // });
+
+      it('should have at least one person', function () {
+        expect(vm.people).to.have.length.above(0);
+      });
+
+      it('should have people count of 7', function () {
+        expect(vm.people).to.have.length(7);
+      });
     });
   });
 
