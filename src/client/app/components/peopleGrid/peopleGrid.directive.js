@@ -8,7 +8,9 @@
     return {
       restrict: 'E',
       templateUrl: 'app/components/peopleGrid/peopleGrid.html',
-      scope: { data: '=' },
+      scope: {
+        data: '='
+      },
       controller: PeopleGridController,
       controllerAs: 'vm',
       bindToController: true
