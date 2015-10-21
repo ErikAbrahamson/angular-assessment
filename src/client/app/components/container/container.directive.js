@@ -14,7 +14,8 @@
       },
       controller: ContainerController,
       controllerAs: 'vm',
-      bindToController: true
+      bindToController: true,
+      transclude: true
     };
   }
 
@@ -22,8 +23,5 @@
     var vm = this;
 
     vm.wColor= 'w' + vm.color;
-    vm.show
   }
-
-
 }());
