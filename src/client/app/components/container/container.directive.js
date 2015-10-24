@@ -22,6 +22,6 @@
   function ContainerController() {
     var vm = this;
 
-    vm.wColor= 'w' + vm.color;
+    vm.wColor = 'w' + vm.color;
   }
 }());
