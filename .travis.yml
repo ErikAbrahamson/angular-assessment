@@ -6,4 +6,6 @@ node_js:
 - '0.12'
 - '0.11'
 
-script: gulp test
+script:
+  - gulp serve-dev
+  - gulp test
